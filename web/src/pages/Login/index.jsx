@@ -1,0 +1,57 @@
+import React, { useState, useContext } from 'react'
+
+import { AuthContext } from '../../contexts/auth'
+
+import './styles.css'
+
+export default function Login() {
+  const { authenticated, login } = useContext(AuthContext)
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    console.log('submit', { email, password })
+    login(email, password) //integração com meu texto e API
+  }
+  return (
+    <div id="login">
+      <div className="header-title">
+        <h1 className="title">Olá</h1>
+        <h1 className="title">Bem vindo!</h1>
+        <p>{String(authenticated)}</p>
+      </div>
+      <form className="form" onSubmit={handleSubmit}>
+        <div className="content-form">
+          <div className="field">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="password">Senha</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+          </div>
+          <span>
+            <a href="#">Cadastrar</a>
+          </span>
+        </div>
+        <div className="actions">
+          <button type="submit">LOGIN</button>
+        </div>
+      </form>
+    </div>
+  )
+}
