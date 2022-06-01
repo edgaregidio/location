@@ -1,13 +1,13 @@
 import axios from 'axios'
 
 export const api = axios.create({
-  baseURL1: 'http://localhost:3333/'
+  baseURL: 'http://localhost:3333/'
 })
 
-export const getApi = async (email, password) => {
-  return api.get('/data', { email, password })
+export const createSession = async (email, password) => {
+  return api.post('/users/sessions', { email, password })
 }
 
-// export const postApi = async (email, password) => {
-//   return api.post('/data', { email, password })
-// }
+export const getUsers = async () => {
+  return api.get('/users')
+}

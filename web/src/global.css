@@ -9,16 +9,15 @@
 }
 
 :root {
-  --bg-color: #121214;
+  --bg-color: #f9f9f9;
+  --bg-color-two: #e0dcea;
   --primary-color: #5d9dff;
+
+  --text-color-one: #222;
+  --text-color-two: #555;
+
+  --bg-input: '#ccc';
 }
 body {
   background-color: var(--bg-color);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  padding: 2rem;
 }

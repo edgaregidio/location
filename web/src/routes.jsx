@@ -1,10 +1,14 @@
-import React, { Children, useContext } from 'react'
+import React, { useContext } from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
+
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
 
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 
 import { AuthProvider, AuthContext } from './contexts/auth'
+import Register from './pages/Register'
 
 export default function MainRoutes() {
   const Private = ({ children }) => {
@@ -13,7 +17,7 @@ export default function MainRoutes() {
       return <div className="loading">Espera, está quase la!</div>
     }
     if (!authenticated) {
-      return <Navigate to="/Login" />
+      return <Navigate to="/" />
     }
     return children
   }
@@ -21,9 +25,10 @@ export default function MainRoutes() {
   return (
     <AuthProvider>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Login />} />
         <Route
-          path="/"
+          path="/dashboard"
           element={
             <Private>
               <Dashboard />
@@ -31,6 +36,7 @@ export default function MainRoutes() {
           }
         />
       </Routes>
+      <ToastContainer />
     </AuthProvider>
   )
 }

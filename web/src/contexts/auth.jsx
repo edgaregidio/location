@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { api, getApi } from '../services/api'
+import { createSession, getUsers } from '../services/api'
 
 export const AuthContext = createContext()
 
@@ -20,30 +20,27 @@ export const AuthProvider = ({ children }) => {
   }, [])
 
   const login = async (email, password) => {
-    const response = await getApi(email, password)
+    const response = await createSession(email, password)
 
     console.log('login', response.data)
-
-    // api criando uma session
-    // resposta do banco
-    const loggedUser = response.data
+    const loggedUser = response.data.user
 
     localStorage.setItem('user', JSON.stringify(loggedUser))
 
     setUser(loggedUser)
-    navigate('/')
+    navigate('/dashboard')
   }
 
   const logout = () => {
     console.log('Log Out!')
     localStorage.removeItem('user')
     setUser(null)
-    navigate('/login')
+    navigate('/')
   }
 
   return (
     <AuthContext.Provider
-      value={{ authenticated: !!user, user, loading, login, logout }}
+      value={{ authenticated: !!user, user, loading, login, logout, getUsers }}
     >
       {children}
     </AuthContext.Provider>
