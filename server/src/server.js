@@ -10,4 +10,4 @@ app.get('/', (req, res) => {
   return res.json('up')
 })
 
-app.listen(process.env.PORT || 3333, () => console.log('Server is running'))
+app.listen(process.env.PORT || 4000, () => console.log('Server is running'))
