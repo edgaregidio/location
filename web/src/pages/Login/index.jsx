@@ -52,8 +52,16 @@ export default function Login() {
                   onChange={e => setPassword(e.target.value)}
                 />
               </div>
-              <span>
-                <span onClick={() => navigate('/register')}>Cadastrar</span>
+              <span className="btn-register">
+                <p>
+                  Não tem uma conta?&nbsp;
+                  <span
+                    className="btn-register-click"
+                    onClick={() => navigate('/register')}
+                  >
+                    Cadastrar
+                  </span>
+                </p>
               </span>
             </div>
             <div className="actions">

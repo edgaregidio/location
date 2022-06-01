@@ -6,6 +6,21 @@
   justify-content: center;
 }
 
+.btn-register p {
+  font-weight: 300;
+  color: var(--text-color-two);
+}
+
+.btn-register-click {
+  cursor: pointer;
+  transition: ease all 0.3s;
+  font-weight: 800;
+}
+
+.btn-register-click:hover {
+  color: var(--primary-color);
+}
+
 .content-img {
   background: var(--bg-color-two);
   width: 45%;
