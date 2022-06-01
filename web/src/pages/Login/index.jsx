@@ -28,6 +28,7 @@ export default function Login() {
         <div id="login">
           <div className="header-title">
             <h1 className="title">Olá</h1>
+            <br />
             <h1 className="title">Bem vindo!</h1>
           </div>
           <form className="form" onSubmit={handleSubmit}>

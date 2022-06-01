@@ -56,8 +56,11 @@
 }
 
 #login .header-title {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 15rem;
+  line-height: 1rem;
 }
 
 #login .form {
